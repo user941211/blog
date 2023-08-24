@@ -1,13 +1,14 @@
 import { ObjectId } from "mongodb";
 import { connectDB } from "/util/database"
 import Link from 'next/link'
+import Deletebtn from "./router_btn";
 
 export default async function Detail(props) {
     let db = (await connectDB).db(`${process.env.DB_DB}`);
     let result = await db.collection(`${process.env.DB_LIST}`).findOne({
         _id: new ObjectId(props.params.id)
     })
-    
+    //console.log(props)
     return (
         <div className="bg-white p-6 w-4/5 mx-auto">
             <table className="w-full border border-collapse border-gray-300">
@@ -34,10 +35,13 @@ export default async function Detail(props) {
                     </tr>
                 </tbody>
             </table>
-            <router_btn/>
-            <Link href={`/edit/${result._id}`}><button className="text-base m-2 p-5 border border-black rounded-xl">수정하기</button></Link>
-            <button className="text-base m-2 p-5 border border-black rounded-xl">삭제하기</button>
-            <Link href='/list'><button className="text-base m-2 p-5 border border-black rounded-xl">목록으로 돌아가기</button></Link>
+            
+            <div className="w-full mx-auto">
+                <Link href={`/edit/${result._id}`}><button className="text-base m-2 p-5 border border-black rounded-xl">수정하기</button></Link>
+                <Deletebtn id={props.params.id}/>
+                <Link href='/list'><button className="text-base m-2 p-5 border border-black rounded-xl">목록으로 돌아가기</button></Link>
+            </div>
+            
         </div>
     )
 }

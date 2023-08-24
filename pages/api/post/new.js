@@ -4,14 +4,14 @@ export default async function handler(req, res){
     const todayTime = () => {
         let now = new Date();
         let year = now.getFullYear();
-        let month = now.getMonth();
+        let month = now.getMonth() +1 ;
         let date = now.getDate();
-        const week = ['일', '월', '화', '수', '목', '금', '토'];
-        let hours = now.getHours();
-        let mintues = now.getMinutes();
+        // const week = ['일', '월', '화', '수', '목', '금', '토'];
+        // let hours = now.getHours();
+        // let mintues = now.getMinutes();
 
-        //return year+'.'+month+'.'+date+' ('+dayweek+')요일 '+hours+':'+mintues
-        return year+'.'+month+'.'+date+' '+hours+':'+mintues
+        //return year+'.'+month+'.'+date+' '+hours+':'+mintues
+        return year+'.'+month+'.'+date
     }
     
     const document={
@@ -19,10 +19,10 @@ export default async function handler(req, res){
         date : todayTime(),
         views : 0
     }
-    console.log(document)
+    //console.log(document)
     if(req.method =='POST'){
         try{
-            console.log(req.body)
+            //console.log(req.body)
             if(req.body.title == ''){
                 return res.status(500).json('제목 왜 안써.');
                 //res.write("<script>alert('제목 왜 안써')</script>");
@@ -31,8 +31,9 @@ export default async function handler(req, res){
             }
             try{
                 let db = (await connectDB).db(`${process.env.DB_DB}`);
+
                 let result = await db.collection(`${process.env.DB_LIST}`).insertOne(document)
-                return res.status(200).redirect('/list')
+                return res.redirect(302,'/list')
             }catch(error){}
             
         }catch (error) {

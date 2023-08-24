@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar {
+    background: white;
+    padding: 20px;
+}
+
+.navbar a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    font-weight: bold;
+}
