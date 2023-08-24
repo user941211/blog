@@ -3,6 +3,8 @@ import Link from 'next/link'
 import ListItem from "./list_item";
 //import DetailLink from "./DetailLink"
 
+export const dynamic = 'force-dynamic'
+
 export default async function List() {
     let db = (await connectDB).db(`${process.env.DB_DB}`);
     let result = await db.collection(`${process.env.DB_LIST}`).find().toArray();
