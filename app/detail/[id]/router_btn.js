@@ -9,10 +9,15 @@ export default function Deletebtn(props) {
       }).then((response) => {
         if (response.ok) {
           alert('삭제 완료됨');
-          window.location.href = '/list';
+          if (typeof window !== "undefined") {
+            window.location.href = '/list';
+          }
+
         } else {
           alert('삭제 실패');
-          window.location.reload();
+          if (typeof window !== "undefined") {
+            window.location.reload();
+          }
         }
       })
         .catch((error) => {

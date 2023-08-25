@@ -8,6 +8,6 @@ export const authOptions = {
       clientSecret: `${process.env.AUTH_PW}`,
     }),
   ],
-  secret : 'qwfnio3q1;ov@asd5lnv'
+  secret : `${process.env.NEXTAUTH_URL}`
 };
 export default NextAuth(authOptions); 
