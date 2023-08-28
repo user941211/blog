@@ -15,14 +15,15 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   let session = await getServerSession(authOptions)
-  //console.log(session)
+  console.log(session)
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={inter.className}>
         <div className="navbar mx-auto text-center">
-          <Link href="/" className="logo">미구현화면, List를 눌러주세요</Link>
+          <Link href="/" className="logo">실험용 CRUD</Link>
           <Link href="/list">List</Link>
-          {session!=null? <LogoutBtn />:<LoginBtn />}
+          {/* <LoginBtn></LoginBtn> */}
+          {session ? <span>{session.user.name}<LogoutBtn /></span> : <LoginBtn />}
         </div>
         {children}
       </body>
