@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
           <Link href="/" className="logo">실험용 CRUD</Link>
           <Link href="/list">List</Link>
           {/* <LoginBtn></LoginBtn> */}
-          {session ? <span>{session.user.name}<LogoutBtn /></span> : <LoginBtn />}
+          {session ? <span>{session.user.name + ' 님 어서오세요'}<LogoutBtn /></span> : <LoginBtn />}
         </div>
         {children}
       </body>

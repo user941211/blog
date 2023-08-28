@@ -1,6 +1,9 @@
 import { connectDB } from "@/util/database.js";
 import Link from 'next/link';
-
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import MainpageLoginBtn from './MainpageLoginBtn'
+import MainpageLogoutBtn from './MainpageLogoutBtn'
 require("dotenv").config();
 
 export default async function Home() {
@@ -8,16 +11,17 @@ export default async function Home() {
   const clinet = await connectDB;
   const db = clinet.db(`${process.env.DB_DB}`)
   //const db = (await connectDB).db(`${process.env.DB_DB}`)로 축약 가능
-  
+  let session = await getServerSession(authOptions)
   let result = await db.collection('post').find().toArray()
   //collection의 모든 document를 꺼내려면 이걸 사용
-
+  //onClick={() => { alert('로그아웃되었습니다'),signOut() }}
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
         <div className="w-full p-6 bg-white rounded-md shadow-md lg:max-w-xl">
-          <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">소셜 로그인하기!</button>
-          <h1 className="text-3xl font-bold text-center text-gray-700">현 버전에서는 로그인/회원가입 기능은 미구현 하였고, 소셜로그인만 구현하였습니다</h1>
-          <h1 className="text-3xl font-bold text-center text-gray-700">상단의 navbar에서 List를 눌러 CRUD 구현한 간단한 블로그 기능을 확인해주세요 </h1>
+          {
+            session? <MainpageLogoutBtn/>:<MainpageLoginBtn/>
+          }
+          {/* <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">소셜 로그인하기!</button> */}
           {/*<h1 className="text-3xl font-bold text-center text-gray-700">소셜 로그인</h1>
           
            <form className="mt-6 mx-auto">
