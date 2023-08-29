@@ -15,14 +15,12 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   let session = await getServerSession(authOptions)
-  console.log(session)
   return (
     <html lang="ko">
       <body className={inter.className}>
         <div className="navbar mx-auto text-center">
           <Link href="/" className="logo">실험용 CRUD</Link>
           <Link href="/list">List</Link>
-          {/* <LoginBtn></LoginBtn> */}
           {session ? <span>{session.user.name + ' 님 어서오세요'}<LogoutBtn /></span> : <LoginBtn />}
         </div>
         {children}

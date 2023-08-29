@@ -25,10 +25,10 @@ export default async function Detail(props) {
                         <td className="px-6 py-3 text-center text-s font-medium text-gray-500 uppercase tracking-wider w-[25%]">작성일</td>
                         <td className="px-6 py-3 border border-gray-300 whitespace-nowrap">{result.date}</td>
                     </tr>
-                    <tr className="border-b border-gray-300">
+                    {/* <tr className="border-b border-gray-300">
                         <td className="px-6 py-3 text-center text-s font-medium text-gray-500 uppercase tracking-wider w-[25%]">조회수</td>
                         <td className="px-6 py-3 border border-gray-300 whitespace-nowrap">{result.views}</td>
-                    </tr>
+                    </tr> */}
                     <tr>
                         <td className="px-6 py-3 text-center text-s font-medium text-gray-500 uppercase tracking-wider w-[25%]">내용</td>
                         <td className="px-6 py-3 border border-gray-300 w-[75%]">{result.content}</td>
