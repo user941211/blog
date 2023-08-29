@@ -8,7 +8,11 @@ export default async function Detail(props) {
     let result = await db.collection(`${process.env.DB_LIST}`).findOne({
         _id: new ObjectId(props.params.id)
     })
-    //console.log(props)
+    // let result1 = await db.collection(`${process.env.DB_USER}`).findOne({
+    //     email : (result.author).toString()
+    // })
+    // console.log(result1)
+    // 추후에 업데이트할것
     return (
         <div className="bg-white p-6 w-4/5 mx-auto">
             <table className="w-full border border-collapse border-gray-300">
@@ -19,7 +23,7 @@ export default async function Detail(props) {
                     </tr>
                     <tr className="border-b border-gray-300">
                         <td className="px-6 py-3 text-center text-s font-medium text-gray-500 uppercase tracking-wider w-[25%]">작성자</td>
-                        <td className="px-6 py-3 border border-gray-300 whitespace-nowrap">작성자</td>
+                        <td className="px-6 py-3 border border-gray-300 whitespace-nowrap">{result.author}</td>
                     </tr>
                     <tr className="border-b border-gray-300">
                         <td className="px-6 py-3 text-center text-s font-medium text-gray-500 uppercase tracking-wider w-[25%]">작성일</td>

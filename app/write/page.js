@@ -1,13 +1,13 @@
 //글 작성 페이지
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-
+import Alert from './alert'
 export default async function write(){
     let session = await getServerSession(authOptions)
-    console.log(session)
+    //console.log(session)
     if(session==null){
         return(
-            <div>로그인 해야지 글 작성 가능!</div>
+            <Alert/>
         )
     }else{
         return(

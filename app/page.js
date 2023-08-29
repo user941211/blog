@@ -18,11 +18,14 @@ export default async function Home() {
   //collection의 모든 document를 꺼내려면 이걸 사용
   
   return (
+    
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
+      
       <Loginform />
       <div className="w-full p-6 bg-white rounded-md shadow-md lg:max-w-xl">
         <h1 className="text-3xl font-bold text-center text-gray-700">로그인</h1>
-        <form className="mt-6 mx-auto">
+        {session ? <MainpageLogoutBtn /> : <MainpageLoginBtn />}
+        {/* <form className="mt-6 mx-auto">
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-semibold text-gray-800">아이디</label>
             <input type="user_id" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -36,9 +39,9 @@ export default async function Home() {
             <button className="m-1 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
             
             >로그인하기!</button>
-            {session ? <MainpageLogoutBtn /> : <MainpageLoginBtn />}
+            
           </div>
-        </form>
+        </form> */}
         <p className="mt-4 text-sm text-center text-gray-700 mx-2">
           계정이 없으면{" "}
           <Link href="/register" className="font-medium text-blue-600 hover:underline">회원가입</Link>

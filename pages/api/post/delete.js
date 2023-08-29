@@ -9,17 +9,15 @@ export default async function handler(req, res){
     console.log(result[0].author)
     
     let session =  await getServerSession(req, res, authOptions)
-    console.log(session.user.email)
-    console.log(result[0].author==session.user.email)
     if(session){
         if(result[0].author==session.user.email){
             console.log('진입성공')
             res.status(200).json({message : "삭제 성공"})
         }else{
-            res.status(400).json({message : "작성자 본인만 삭제할 수 있습니다."})
+            res.status(401).json({message : "작성자 본인만 삭제할 수 있습니다."})
         }
     }else{
-        res.status(400).json({message : "작성자 본인만 삭제할 수 있습니다."})
+        res.status(402).json({message : "작성자 본인만 삭제할 수 있습니다."})
     }
     console.log(session)
     console.log(req.body)

@@ -30,7 +30,7 @@ export default async function handler(req, res){
         date : todayTime(),
         views : 0
     }
-    console.log(document)
+    //console.log(document)
     if(req.method =='POST'){
         try{
             //console.log(req.body)

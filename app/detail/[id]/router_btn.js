@@ -13,7 +13,7 @@ export default function Deletebtn(props) {
         method: 'DELETE', body: props.id
       }).then((response) => {
         // console.log(response.status)
-        if (response.status===200) {
+        if (response.status === 200) {
           // console.log('확인완료')
           alert('삭제 완료됨');
           router.push('/list')

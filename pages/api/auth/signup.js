@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    console.log(req.body)
     if(/^.{8,15}$/.test(req.body.password)){console.log(1)}else{console.log(2)}
     if(
       /^\w{4,12}$/.test(req.body.name) && 
