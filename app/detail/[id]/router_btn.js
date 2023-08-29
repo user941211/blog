@@ -6,7 +6,7 @@ export default function Deletebtn(props) {
   const pathname = usePathname();
   const router = useRouter();
   
-  console.log(props)
+  // console.log(props)
   return (
     <button className="text-base m-2 p-5 border border-black rounded-xl" onClick={() => {
       fetch('/api/post/delete', {
@@ -17,9 +17,12 @@ export default function Deletebtn(props) {
           // console.log('확인완료')
           alert('삭제 완료됨');
           router.push('/list')
-        } else {
-          alert('삭제 실패');
-          router.reload();
+        } else if (response.status === 401) {
+          alert('작성자 본인만 삭제가 가능합니다.');
+          router.push('/list')
+        } else if (response.status === 402) {
+          alert('작성자 본인이 로그인 해야 삭제가 가능합니다.');
+          router.push('/list')
         }
       })
         .catch((error) => {
