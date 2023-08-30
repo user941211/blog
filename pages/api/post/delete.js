@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     let session = await getServerSession(req, res, authOptions)
     if (session != null) {
         if (result[0].author == session.user.email) {
-            console.log('진입성공')
+            //console.log('진입성공')
             res.status(200).json({ message: "삭제 성공" })
             if (req.method == 'DELETE') {
                 try {

@@ -22,7 +22,7 @@ export default async function handler(req, res){
     }
 
     if (req.method == 'POST') {
-        console.log(req.body)
+        //console.log(req.body)
         let db = (await connectDB).db(`${process.env.DB_DB}`);
         let result = await db.collection(`${process.env.DB_LIST}`).updateOne(
             { _id: new ObjectId(req.body._id) },
