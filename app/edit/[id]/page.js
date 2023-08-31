@@ -2,7 +2,7 @@ import { connectDB } from "/util/database"
 import { ObjectId } from "mongodb";
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import Alert from './alert'
+import Alert from '/app/alert'
 import NotSame from "@/app/NotSame";
 // import { useState } from 'react';
 

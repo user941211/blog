@@ -1,17 +1,17 @@
 import { connectDB } from "@/util/database";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]"
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "../auth/[...nextauth]"
 
 export default async function handler(req, res){
-    let session =  await getServerSession(req, res, authOptions)
+    // let session =  await getServerSession(req, res, authOptions)
     
-    //로그인 안하면 session이 비었기 때문에 .을 쓸려면 if문 필수
-    if(session){
-        req.body.author = session.user.email
-    }else{
-        res.status(500).json({ message: '로그인하세요' });
-    }
-    console.log(req.body)
+    // //로그인 안하면 session이 비었기 때문에 .을 쓸려면 if문 필수
+    // if(session){
+    //     req.body.author = session.user.email
+    // }else{
+    //     res.status(500).json({ message: '로그인하세요' });
+    // }
+    //console.log(req.body)
     const todayTime = () => {
         let now = new Date();
         let year = now.getFullYear();
@@ -46,7 +46,6 @@ export default async function handler(req, res){
                 let result = await db.collection(`${process.env.DB_LIST}`).insertOne(document)
                 return res.redirect(302,'/list')
             }catch(error){}
-            
         }catch (error) {
             console.error('DB 삽입 오류:', error);
             res.status(500).json({ message: '데이터베이스 오류' });

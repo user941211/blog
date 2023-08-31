@@ -1,7 +1,7 @@
 //글 작성 페이지
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import Alert from './alert'
+import Alert from '../alert'
 export default async function write(){
     let session = await getServerSession(authOptions)
     //console.log(session)
