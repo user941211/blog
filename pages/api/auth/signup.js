@@ -1,12 +1,12 @@
 import { connectDB } from "@/util/database";
-import { ObjectId } from "mongodb";
+//import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     let db = (await connectDB).db(`${process.env.DB_DB}`);
     let result = await db.collection(`${process.env.DB_USER}`).find({ email: req.body.email }).toArray();
-    console.log(result)
+    //console.log(result)
     if (result!=null) {
       res.status(405).json('중복된 이메일입니다. 다른걸로 하십쇼')
     } else {
@@ -26,7 +26,5 @@ export default async function handler(req, res) {
       }
     }
     //if(/^.{8,15}$/.test(req.body.password)){console.log(1)}else{console.log(2)}
-    
-    
   }
 }; 
