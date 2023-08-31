@@ -23,6 +23,7 @@ export default async function write(){
                             <td><input name="content" className="mx-auto box-border p-2 block" placeholder="내용" /></td>
                         </tr>
                     </table>
+                    <input name="author" className="hidden" value={session.user.email}/>
                     <button className="p-2 px-4 bg-gray-300 rounded-md" type="submit">전송</button>
                 </form>
             </div>

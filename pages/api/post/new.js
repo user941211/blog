@@ -4,7 +4,7 @@ import { connectDB } from "@/util/database";
 
 export default async function handler(req, res){
     // let session =  await getServerSession(req, res, authOptions)
-    
+    // req.body.author = session.user.email
     // //로그인 안하면 session이 비었기 때문에 .을 쓸려면 if문 필수
     // if(session){
     //     req.body.author = session.user.email
