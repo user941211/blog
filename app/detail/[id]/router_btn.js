@@ -9,7 +9,7 @@ export default function Deletebtn(props) {
   // console.log(props)
   return (
     <button className="text-base m-2 p-5 border border-black rounded-xl" onClick={() => {
-      fetch('/api/post/delete', {
+      fetch(`${process.env.DB_DELETE}`, {
         method: 'DELETE', body: props.id
       }).then((response) => {
         // console.log(response.status)
