@@ -19,8 +19,8 @@ export default async function RootLayout({ children }) {
     <html lang="ko">
       <body className={inter.className}>
         <div className="w-full mx-auto navbar text-center">
-          <Link href="/" className="logo ">실험용 CRUD</Link>
-          <Link href="/list">List</Link>
+          <Link href="/" className="logo border border-black rounded-md p-2">실험용 CRUD</Link>
+          <Link href="/list" className='border border-black rounded-lg p-2'>List</Link>
           {session ? <span>{session.user.name + ' 님 어서오세요'}<LogoutBtn /></span> : <LoginBtn />}
         </div>
         {children}
