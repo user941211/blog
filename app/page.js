@@ -1,4 +1,4 @@
-import { connectDB } from "@/util/database.js";
+//import { connectDB } from "@/util/database.js";
 import Link from 'next/link';
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
@@ -9,11 +9,11 @@ require("dotenv").config();
 
 export default async function Home() {
   
-  const clinet = await connectDB;
-  const db = clinet.db(`${process.env.DB_DB}`)
+  // const clinet = await connectDB;
+  // const db = clinet.db(`${process.env.DB_DB}`)
   //const db = (await connectDB).db(`${process.env.DB_DB}`)로 축약 가능
   let session = await getServerSession(authOptions)
-  let result = await db.collection('post').find().toArray()
+  //let result = await db.collection(`${process.env.DB_LIST}`).find().toArray()
   //collection의 모든 document를 꺼내려면 이걸 사용
   
   return (
