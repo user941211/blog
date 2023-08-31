@@ -5,11 +5,11 @@ import { usePathname, useRouter } from 'next/navigation';
 export default function Deletebtn(props) {
   const pathname = usePathname();
   const router = useRouter();
-  
+  //`${process.env.DB_DELETE}`
   // console.log(props)
   return (
     <button className="text-base m-2 p-5 border border-black rounded-xl" onClick={() => {
-      fetch(`${process.env.DB_DELETE}`, {
+      fetch('/api/post/delete', {
         method: 'DELETE', body: props.id
       }).then((response) => {
         // console.log(response.status)
